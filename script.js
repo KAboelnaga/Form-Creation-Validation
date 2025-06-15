@@ -32,5 +32,6 @@ document.addEventListener('DOMContentLoaded', function () {
             feedbackDiv.style.color = '#dc3545';
         }
         feedbackDiv.innerHTML = messages.join('</br>');
+        feedbackDiv.style.display = 'block';
     });
 });

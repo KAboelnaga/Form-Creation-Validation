@@ -8,10 +8,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 throw new Error('Network response was not ok');
             }
             const data = await response.json();
-            dataContainer.innerHTML = data.map(user => `<p>${user.name} - ${user.email}</p>`).join('');
+            const userList = data.map(user => `<li>${user.name} (${user.email})</li>`).join('');
+            const list = document.createElement('ul');
+            list.appendChild(document.createRange().createContextualFragment(userList));
+            dataContainer.innerHTML = '';
         } catch (error) {
             console.error('Fetch error:', error);
-            dataContainer.innerHTML = '<p>Error fetching data. Please try again later.</p>';
+            dataContainer.innerHTML = '<p>Failed to load user data.</p>';
         }
     }
     fetchUserData();
